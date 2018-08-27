@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Hodowla raka</string>
+    <string name="CounterLabel">Wypalone papierosy: %1$d</string>
+    <string name="SumLabel">Wydane pieniadze: \n %1$.2f</string>
+    <string name="counterButton">Papieros</string>
+    <string name="sumButton">paczka</string>
+    <string name="Ok">Ok</string>
+</resources>
