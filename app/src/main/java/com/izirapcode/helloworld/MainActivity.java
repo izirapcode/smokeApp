@@ -1,11 +1,17 @@
 package com.izirapcode.helloworld;
 
 import android.app.Activity;
+import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.Calendar;
+
+import butterknife.OnClick;
 
 import static com.izirapcode.helloworld.DataManager.*;
 
@@ -15,21 +21,24 @@ public class MainActivity extends Activity {
     EditText editText;
     Button counterButton, sumButton, okButton ;
     int score;
-
+    DbManager db;
+    Calendar cal;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         init();
-        showCounter();
+        final int day = cal.get(Calendar.DAY_OF_MONTH);
+        final int month = cal.get(Calendar.MONTH);
+        showCounter(day,month);
         showSum();
+
         counterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                score++;
-                setCounter(score,MainActivity.this);
-                showCounter();
-            }
+               db.addSmoke(month,day);
+               showCounter(day,month);
+              }
         });
         sumButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,8 +61,9 @@ public class MainActivity extends Activity {
 
     }
 
-    private void showCounter(){
-        counterText.setText(getString(R.string.CounterLabel,getCounter(this)));
+
+    private void showCounter(int day,int month){
+        counterText.setText(getString(R.string.CounterLabel,db.getTodayCount(day),db.getMonthCount(month),db.getSmokeCount()));
     }
 
     private void showSum(){
@@ -70,6 +80,8 @@ public class MainActivity extends Activity {
         counterText =findViewById(R.id.licznik);
         sumButton = findViewById(R.id.paczkaButton);
         score = getCounter(this);
+        db = new DbManager(this);
+        cal = Calendar.getInstance();
     }
 
 }
