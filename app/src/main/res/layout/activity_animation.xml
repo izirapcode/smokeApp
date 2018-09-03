@@ -26,9 +26,10 @@
         android:layout_marginBottom="17dp"
         android:gravity="center"
         android:textSize="40dp"
-        android:textColor="@color/white"
+        android:textColor="@color/textIcons"
         android:inputType="textPersonName"
         android:text="@string/NameOfApp"
+        android:focusable="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

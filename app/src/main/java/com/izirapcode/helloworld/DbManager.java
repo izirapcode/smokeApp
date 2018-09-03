@@ -36,10 +36,10 @@ public class DbManager extends SQLiteOpenHelper {
         return db.query("smoke",colums,null,null,null,null,null).getCount();
     }
 
-    public int getTodayCount(int day){
+    public int getTodayCount(int day,int month){
         SQLiteDatabase db = getReadableDatabase();
-        String[] args = {String.valueOf(day)};
-        return db.rawQuery("SELECT id FROM smoke WHERE day = ?",args).getCount();
+        String[] args = {String.valueOf(day),String.valueOf(month)};
+        return db.rawQuery("SELECT id FROM smoke WHERE day = ? AND month=?",args).getCount();
     }
 
     public int getMonthCount(int month){

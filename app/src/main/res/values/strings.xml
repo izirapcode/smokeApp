@@ -1,9 +1,11 @@
 <resources>
     <string name="app_name">Hodowla raka</string>
-    <string name="CounterLabel">Wypalone dzisiaj: %1$d \n W tym miesiacu: %2$d \n Ogólnie: %3$d</string>
-    <string name="SumLabel">Wydane pieniadze: \n %1$.2f</string>
-    <string name="counterButton">papieros</string>
-    <string name="sumButton">paczka</string>
+    <string name="CounterLabel">Wypalone dzisiaj: %1$d \nW tym miesiacu: %2$d \nOgólnie: %3$d</string>
+    <string name="SumLabel">Wydane pieniadze: \n%1$.2f</string>
+    <string name="counterButton"></string>
+    <string name="sumButton">+</string>
     <string name="Ok">Ok</string>
     <string name="NameOfApp">Hodowla Raka</string>
+    <string name="cigNumberText">%1$d papierosów</string>
+    <string name="smokeCoutnerCalendar">papierosów : %1$d</string>
 </resources>

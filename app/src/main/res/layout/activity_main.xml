@@ -8,71 +8,78 @@
 
     <TextView
         android:id="@+id/licznik"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:layout_marginStart="3dp"
         android:text="@string/CounterLabel"
         android:textColor="@color/colorPrimaryDark"
-        android:textSize="30sp"
+        android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.8"
+        />
 
-    <Button
+    <ImageButton
         android:id="@+id/licznikButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="68dp"
-        android:layout_marginTop="152dp"
-        android:text="@string/counterButton"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_width="125dp"
+        android:layout_height="100dp"
+        android:background="@drawable/smoke"
+        app:layout_constraintVertical_bias="0.4"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        />
 
     <TextView
         android:id="@+id/wydanePieniadze"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="308dp"
-        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="82dp"
+        android:imeOptions="actionDone"
         android:text="@string/SumLabel"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="30sp"
-        android:imeOptions="actionDone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/licznik" />
+        app:layout_constraintStart_toStartOf="@+id/licznik"
+        app:layout_constraintTop_toBottomOf="@+id/licznik"
+        app:layout_constraintVertical_bias="0.8" />
+    <!-- app:layout_constraintTop_toBottomOf="@+id/licznik" -->
+
 
     <Button
         android:id="@+id/paczkaButton"
-        android:layout_width="wrap_content"
-        android:layout_height="47dp"
-        android:layout_marginEnd="68dp"
+        android:layout_width="82dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="32dp"
         android:text="@string/sumButton"
-        app:layout_constraintBottom_toBottomOf="@+id/licznikButton"
+        app:layout_constraintBottom_toTopOf="@+id/editText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/licznikButton"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/licznik" />
 
     <EditText
         android:id="@+id/editText"
-        android:layout_width="248dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="20dp"
+        android:layout_width="106dp"
+        android:layout_height="33dp"
+        android:layout_marginBottom="15dp"
+        android:textSize="12sp"
         android:ems="10"
         android:gravity="center"
         android:inputType="numberDecimal"
-        app:layout_constraintStart_toStartOf="@+id/licznikButton"
-        app:layout_constraintTop_toBottomOf="@+id/paczkaButton" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/wydanePieniadze" />
 
-    <Button
-        android:id="@+id/okButton"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="97dp"
-        android:layout_marginStart="95dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/Ok"
-        app:layout_constraintEnd_toEndOf="@+id/wydanePieniadze"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/editText"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
 
 </android.support.constraint.ConstraintLayout>
