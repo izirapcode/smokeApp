@@ -19,16 +19,16 @@ class DataManager {
 
     }
 
-    public static void setCounter(int score, Context context) {
+    public static void setLastCig(String date, Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = prefs.edit();
-        editor.putInt("licznik", score);
+        editor.putString("lastCig", date);
         editor.commit();
     }
 
-    public static int getCounter(Context context) {
+    public static String getLastCig(Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);
-        return prefs.getInt("licznik", 0);
+        return prefs.getString("lastCig", "");
     }
 
     public static float getSum(Context context) {

@@ -1,40 +1,35 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
+    android:background="@color/colorPrimary"
     >
-
     <FrameLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        >
         <TextView
             android:id="@+id/dayNr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="20sp"
-            android:scaleType="centerCrop"/>
+            android:scaleType="centerCrop" />
 
 
     </FrameLayout>
-    <ImageView
-        android:id="@+id/smokeIconCalendar"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:src="@drawable/smoke"
-        android:layout_gravity="bottom|right"/>
 
     <TextView
         android:id="@+id/smokeNr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="12sp"
-        android:text="@string/smokeCoutnerCalendar"
+        android:textSize="20sp"
         android:textStyle="bold"
-        android:paddingTop="4dp"
-        android:paddingLeft="8dp"
-        android:paddingRight="8dp"
+        android:textColor="@color/primaryText"
+        android:layout_gravity="end"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="5dp"
         android:gravity="center_horizontal"/>
 
 

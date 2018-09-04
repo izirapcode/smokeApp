@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-
 import java.util.Calendar;
 
 public class CalendarAdapter extends BaseAdapter {
@@ -46,4 +45,6 @@ public class CalendarAdapter extends BaseAdapter {
         ((TextView)convertView.findViewById(R.id.smokeNr)).setText(""+db.getTodayCount(position+1,calendar.get(Calendar.MONTH)));
         return convertView;
     }
+
+
 }

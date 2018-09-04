@@ -2,7 +2,6 @@ package com.izirapcode.helloworld;
 
 
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
@@ -16,8 +15,10 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
-import java.util.Calendar;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 
 import static com.izirapcode.helloworld.DataManager.*;
@@ -26,8 +27,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView counterText, sumText;
     EditText editText;
-    Button  sumButton, okButton;ImageButton counterButton;
-    int score;
+    Button  sumButton;
+    ImageButton counterButton;
     DbManager db;
     Calendar cal;
     Toolbar toolbar;
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                 db.addSmoke(month, day);
                 showCounter(day, month);
                 buttonFlash();
+                setLastCig(getDateAndTime(),MainActivity.this);
             }
         });
         sumButton.setOnClickListener(new View.OnClickListener() {
@@ -103,7 +105,6 @@ public class MainActivity extends AppCompatActivity {
         sumText = findViewById(R.id.wydanePieniadze);
         counterText = findViewById(R.id.licznik);
         sumButton = findViewById(R.id.paczkaButton);
-        score = getCounter(this);
         db = new DbManager(this);
         cal = Calendar.getInstance();
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -112,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
     }
 
-    public void buttonFlash(){
+    private void buttonFlash(){
         counterButton.setBackground(getResources().getDrawable(R.drawable.smoke2,null));
         android.view.animation.Animation in = new AlphaAnimation(0.3f,1f);
         in.setDuration(200);
@@ -133,5 +134,10 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         counterButton.startAnimation(in);
+    }
+
+    private String getDateAndTime(){
+        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        return formatter.format(new Date());
     }
 }
