@@ -5,7 +5,7 @@ Aplikacja na android służąca do pomiaru czasu częstotliwości palenia, oraz 
 Otwórz <a href=https://developer.android.com/studio/>android studio</a><br/>
 1.Otwórz plik <br/>
 2.Importuj projekt <br/>
-3.Select build.gradle under the project directory <br/>
+3.Wybierz build.gradle <br/>
 4.OK
 
 ## Screenshots
