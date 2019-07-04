@@ -26,7 +26,7 @@ import java.util.Date;
 
 import static com.izirapcode.helloworld.database.DataManager.*;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BasicActivity {
 
     TextView counterText, sumText;
     EditText editText;
@@ -73,29 +73,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
-        switch (item.getItemId()) {
-            case R.id.calendarOption:
-                intent = new Intent(this, SmokeCalendar.class);
-                startActivity(intent);
-                return true;
-                case R.id.homeOption:
-                    intent = new Intent(this, MainActivity.class);
-                    startActivity(intent);
-                    return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
     private void showCounter() {
         int todayCount = db.getTodayCount();
         int monthCount =  db.getMonthCount();
@@ -117,12 +94,6 @@ public class MainActivity extends AppCompatActivity {
         sumButton = findViewById(R.id.paczkaButton);
         editText.setVisibility(View.INVISIBLE);
         cal = Calendar.getInstance();
-    }
-
-    private void addToolbar(){
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
     }
 
     private void buttonFlash(){

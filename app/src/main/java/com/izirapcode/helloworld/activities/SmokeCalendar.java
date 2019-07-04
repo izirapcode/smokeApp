@@ -23,7 +23,7 @@ import java.util.Date;
 
 import static com.izirapcode.helloworld.database.DataManager.getLastCig;
 
-public class SmokeCalendar extends AppCompatActivity {
+public class SmokeCalendar extends BasicActivity {
 
     GridView gridView;
     Calendar calendar;
@@ -69,12 +69,6 @@ public class SmokeCalendar extends AppCompatActivity {
         lastCigTime.setText(getLastSmokeTime());
     }
 
-    private void addToolbar(){
-        Toolbar toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("");
-    }
-
     public void calendarSet(int amount){
         calendar.add(Calendar.MONTH,amount);
         calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
@@ -100,29 +94,4 @@ public class SmokeCalendar extends AppCompatActivity {
         return "Ostatni papieros \nDni:"+diffDays+"\nGodzin:"+diffHours+"\nMinut:"+diffMin;
 
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        Intent intent;
-        switch (item.getItemId()) {
-            case R.id.calendarOption:
-                intent = new Intent(this, SmokeCalendar.class);
-                startActivity(intent);
-                return true;
-            case R.id.homeOption:
-                intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return true;
-    }
-
-
 }
