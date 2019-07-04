@@ -4,19 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SmokeCalendar">
-
+    tools:context=".activities.SmokeCalendar">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
     <GridView
         android:id="@+id/calendar_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:verticalSpacing="2dp"
+        android:layout_marginTop="4dp"
         android:horizontalSpacing="2dp"
         android:numColumns="7"
+        android:verticalSpacing="2dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/monthHeader" />
+        app:layout_constraintTop_toBottomOf="@+id/monthHeader" />
 
     <Button
         android:id="@+id/previous"
@@ -40,10 +52,12 @@
         android:id="@+id/monthHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
         android:gravity="center"
         android:text=""
         android:textSize="50sp"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
     <TextView
         android:id="@+id/lastCigView"

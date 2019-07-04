@@ -1,4 +1,4 @@
-package com.izirapcode.helloworld;
+package com.izirapcode.helloworld.activities;
 
 
 import android.content.Intent;
@@ -16,12 +16,15 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.support.v7.widget.Toolbar;
 
+import com.izirapcode.helloworld.database.DbManager;
+import com.izirapcode.helloworld.R;
+
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 
-import static com.izirapcode.helloworld.DataManager.*;
+import static com.izirapcode.helloworld.database.DataManager.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,21 +34,19 @@ public class MainActivity extends AppCompatActivity {
     ImageButton counterButton;
     DbManager db;
     Calendar cal;
-    Toolbar toolbar;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        init();
-        final int day = cal.get(Calendar.DAY_OF_MONTH);
-        final int month = cal.get(Calendar.MONTH);
-        showCounter(day, month);
+        initFields();
+        addToolbar();
+        showCounter();
         showSum();
         counterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.addSmoke(month, day);
-                showCounter(day, month);
+                db.addSmoke();
+                showCounter();
                 buttonFlash();
                 setLastCig(getDateAndTime(),MainActivity.this);
             }
@@ -74,11 +75,16 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
         switch (item.getItemId()) {
             case R.id.calendarOption:
-                Intent intent = new Intent(this, SmokeCalendar.class);
+                intent = new Intent(this, SmokeCalendar.class);
                 startActivity(intent);
-            return true;
+                return true;
+                case R.id.homeOption:
+                    intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+                    return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
@@ -90,27 +96,33 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    private void showCounter(int day, int month) {
-        counterText.setText(getString(R.string.CounterLabel, db.getTodayCount(day,month), db.getMonthCount(month), db.getSmokeCount()));
+    private void showCounter() {
+        int todayCount = db.getTodayCount();
+        int monthCount =  db.getMonthCount();
+        int allCount = db.getSmokeCount();
+        counterText.setText(getString(R.string.CounterLabel, todayCount, monthCount, allCount));
     }
 
     private void showSum() {
-        sumText.setText(getString(R.string.SumLabel, getSum(this)));
+        Float spendSum = getSum(this);
+        sumText.setText(getString(R.string.SumLabel, spendSum));
     }
 
-    private void init() {
+    private void initFields() {
+        db = new DbManager(this);
         editText = findViewById(R.id.editText);
-        editText.setVisibility(View.INVISIBLE);
         counterButton = findViewById(R.id.licznikButton);
         sumText = findViewById(R.id.wydanePieniadze);
         counterText = findViewById(R.id.licznik);
         sumButton = findViewById(R.id.paczkaButton);
-        db = new DbManager(this);
+        editText.setVisibility(View.INVISIBLE);
         cal = Calendar.getInstance();
+    }
+
+    private void addToolbar(){
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("");
-        setSupportActionBar(toolbar);
     }
 
     private void buttonFlash(){

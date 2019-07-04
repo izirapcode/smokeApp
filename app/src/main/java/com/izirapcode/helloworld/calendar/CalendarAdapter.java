@@ -1,4 +1,4 @@
-package com.izirapcode.helloworld;
+package com.izirapcode.helloworld.calendar;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -6,13 +6,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
+
+import com.izirapcode.helloworld.R;
+import com.izirapcode.helloworld.database.DbManager;
+
 import java.util.Calendar;
 
 public class CalendarAdapter extends BaseAdapter {
 
     private final Context context;
-    Calendar calendar;
-    DbManager db;
+    private Calendar calendar;
+    private DbManager db;
 
     public CalendarAdapter(Context context,Calendar calendar,DbManager db) {
         this.context = context;
@@ -42,7 +46,7 @@ public class CalendarAdapter extends BaseAdapter {
             convertView = layoutInflater.inflate(R.layout.smoke_grid, null);
         }
         ((TextView)convertView.findViewById(R.id.dayNr)).setText(""+(position+1));
-        ((TextView)convertView.findViewById(R.id.smokeNr)).setText(""+db.getTodayCount(position+1,calendar.get(Calendar.MONTH)));
+        ((TextView)convertView.findViewById(R.id.smokeNr)).setText(""+db.getDayCount(position+1,calendar.get(Calendar.MONTH)));
         return convertView;
     }
 

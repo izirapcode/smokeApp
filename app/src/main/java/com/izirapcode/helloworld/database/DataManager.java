@@ -1,4 +1,4 @@
-package com.izirapcode.helloworld;
+package com.izirapcode.helloworld.database;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -9,7 +9,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-class DataManager {
+public class DataManager {
 
     public static void setSum(float newValue, Context context) {
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(context);

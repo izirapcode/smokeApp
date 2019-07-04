@@ -1,12 +1,19 @@
-package com.izirapcode.helloworld;
+package com.izirapcode.helloworld.activities;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.TextView;
+
+import com.izirapcode.helloworld.calendar.CalendarAdapter;
+import com.izirapcode.helloworld.database.DbManager;
+import com.izirapcode.helloworld.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -14,10 +21,9 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-import static com.izirapcode.helloworld.DataManager.getLastCig;
-import static java.lang.Math.abs;
+import static com.izirapcode.helloworld.database.DataManager.getLastCig;
 
-public class SmokeCalendar extends Activity {
+public class SmokeCalendar extends AppCompatActivity {
 
     GridView gridView;
     Calendar calendar;
@@ -31,7 +37,8 @@ public class SmokeCalendar extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_smoke_calendar);
-        init();
+        initFields();
+        addToolbar();
         previous.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -48,7 +55,7 @@ public class SmokeCalendar extends Activity {
         });
     }
 
-    private void init(){
+    private void initFields(){
         gridView = findViewById(R.id.calendar_grid);
         calendar = Calendar.getInstance();
         db = new DbManager(this);
@@ -60,15 +67,20 @@ public class SmokeCalendar extends Activity {
         monthHeader.setText(monthName[calendar.get(Calendar.MONTH)]);
         lastCigTime = findViewById(R.id.lastCigView);
         lastCigTime.setText(getLastSmokeTime());
+    }
 
+    private void addToolbar(){
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("");
     }
 
     public void calendarSet(int amount){
         calendar.add(Calendar.MONTH,amount);
         calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
         monthHeader.setText(monthName[calendar.get(Calendar.MONTH)]);
-
     }
+
 
     private String getLastSmokeTime(){
         SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
@@ -78,12 +90,38 @@ public class SmokeCalendar extends Activity {
         } catch (ParseException e) {
             return "error";
         }
+        long dayLength = 24*60*60*1000;
+        long hourLength = 60*60*1000;
+        long minLength = 60*1000;
         long diff = now.getTime() - date.getTime();
-        int diffDays = (int)Math.floor(diff / (24*60*60*1000));
-        int diffHours = (int) Math.floor((diff -(diffDays *24*60*60*1000)) / (60*60*1000));
-        int diffMin = (int)(((diff - (diffHours*60*60*1000)) /(60*1000)));
+        int diffDays = (int)Math.floor(diff / dayLength);
+        int diffHours = (int) Math.floor((diff -(diffDays * dayLength)) / (hourLength));
+        int diffMin = (int)(((diff - (diffHours*hourLength)) / minLength));
         return "Ostatni papieros \nDni:"+diffDays+"\nGodzin:"+diffHours+"\nMinut:"+diffMin;
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        Intent intent;
+        switch (item.getItemId()) {
+            case R.id.calendarOption:
+                intent = new Intent(this, SmokeCalendar.class);
+                startActivity(intent);
+                return true;
+            case R.id.homeOption:
+                intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
 
 

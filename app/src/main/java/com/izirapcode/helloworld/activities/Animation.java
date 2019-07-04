@@ -1,13 +1,14 @@
-package com.izirapcode.helloworld;
+package com.izirapcode.helloworld.activities;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.EditText;
 import android.widget.ImageView;
+
+import com.izirapcode.helloworld.R;
 
 public class Animation extends Activity {
 
