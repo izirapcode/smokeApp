@@ -30,6 +30,10 @@ public class BasicActivity extends AppCompatActivity {
                 intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
                 return true;
+            case R.id.statsOption:
+                intent = new Intent(this, StatsActivity.class);
+                startActivity(intent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }

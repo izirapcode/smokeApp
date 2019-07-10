@@ -4,12 +4,16 @@
     tools:context="example.javatpoint.com.optionmenu.MainActivity">
 
     <item  android:id="@+id/homeOption"
-        android:title="glowna"
+        android:title="Główna"
         app:showAsAction="ifRoom"
         android:icon="@drawable/home"
         />
     <item  android:id="@+id/calendarOption"
-        android:title="kalendarz"
+        android:title="Kalendarz"
         app:showAsAction="ifRoom"
         android:icon="@drawable/calendar"/>
+    <item  android:id="@+id/statsOption"
+        android:title="Statystyki"
+        app:showAsAction="ifRoom"
+        android:icon="@drawable/stats"/>
 </menu>

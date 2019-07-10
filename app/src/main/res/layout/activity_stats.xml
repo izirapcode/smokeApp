@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.StatsActivity">
+
+    <TextView
+        android:id="@+id/wydanePieniadze"
+        android:layout_width="wrap_content"
+        android:layout_height="82dp"
+        android:layout_marginTop="44dp"
+        android:imeOptions="actionDone"
+        android:text="@string/SumLabel"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="30sp"
+        app:layout_constraintStart_toStartOf="@+id/licznik"
+        app:layout_constraintTop_toBottomOf="@+id/licznik" />
+
+    <TextView
+        android:id="@+id/licznik"
+        android:layout_width="wrap_content"
+        android:layout_height="75dp"
+        android:layout_marginStart="4dp"
+        android:text="@string/CounterLabel"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.711" />
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="174dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="133dp"
+        android:layout_marginEnd="134dp"
+        android:gravity="center"
+        android:text="@string/title_activity_stats"
+        android:textSize="36sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.145"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/dailyText"
+        android:layout_width="114dp"
+        android:layout_height="47dp"
+        android:text="@string/stats_per_day"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.57"
+        tools:layout_editor_absoluteX="2dp"
+        tools:visibility="visible" />
+
+
+</android.support.constraint.ConstraintLayout>

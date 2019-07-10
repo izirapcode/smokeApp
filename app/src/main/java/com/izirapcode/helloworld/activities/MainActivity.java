@@ -1,12 +1,7 @@
 package com.izirapcode.helloworld.activities;
 
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.inputmethod.EditorInfo;
@@ -14,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.support.v7.widget.Toolbar;
 
 import com.izirapcode.helloworld.database.DbManager;
 import com.izirapcode.helloworld.R;
@@ -28,7 +22,7 @@ import static com.izirapcode.helloworld.database.DataManager.*;
 
 public class MainActivity extends BasicActivity {
 
-    TextView counterText, sumText;
+
     EditText editText;
     Button  sumButton;
     ImageButton counterButton;
@@ -40,13 +34,10 @@ public class MainActivity extends BasicActivity {
         setContentView(R.layout.activity_main);
         initFields();
         addToolbar();
-        showCounter();
-        showSum();
         counterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 db.addSmoke();
-                showCounter();
                 buttonFlash();
                 setLastCig(getDateAndTime(),MainActivity.this);
             }
@@ -61,7 +52,6 @@ public class MainActivity extends BasicActivity {
                         if (actionId == EditorInfo.IME_ACTION_DONE) {
                         setSum(Float.parseFloat(editText.getText().toString()), MainActivity.this);
                         editText.setVisibility(View.INVISIBLE);
-                        showSum();
                         }
                         return false;
                     }
@@ -73,24 +63,12 @@ public class MainActivity extends BasicActivity {
 
     }
 
-    private void showCounter() {
-        int todayCount = db.getTodayCount();
-        int monthCount =  db.getMonthCount();
-        int allCount = db.getSmokeCount();
-        counterText.setText(getString(R.string.CounterLabel, todayCount, monthCount, allCount));
-    }
 
-    private void showSum() {
-        Float spendSum = getSum(this);
-        sumText.setText(getString(R.string.SumLabel, spendSum));
-    }
 
     private void initFields() {
         db = new DbManager(this);
         editText = findViewById(R.id.editText);
         counterButton = findViewById(R.id.licznikButton);
-        sumText = findViewById(R.id.wydanePieniadze);
-        counterText = findViewById(R.id.licznik);
         sumButton = findViewById(R.id.paczkaButton);
         editText.setVisibility(View.INVISIBLE);
         cal = Calendar.getInstance();

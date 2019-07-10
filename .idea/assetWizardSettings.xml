@@ -18,12 +18,23 @@
                                 <PersistentState>
                                   <option name="children">
                                     <map>
+                                      <entry key="clipArt">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="000000" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                       <entry key="clipartAsset">
                                         <value>
                                           <PersistentState>
                                             <option name="values">
                                               <map>
-                                                <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/places/ic_smoking_rooms_black_24dp.xml" />
+                                                <entry key="url" value="jar:file:/C:/Users/mizydorczyk/AppData/Local/JetBrains/Toolbox/apps/AndroidStudio/ch-0/183.5522156/plugins/android/lib/android.jar!/images/material_design_icons/action/ic_trending_up_black_24dp.xml" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -33,9 +44,9 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="outputName" value="smoke2" />
+                                      <entry key="outputName" value="stats" />
                                       <entry key="theme" value="CUSTOM" />
-                                      <entry key="themeColor" value="bd0d11" />
+                                      <entry key="themeColor" value="5f5f5f" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -73,10 +84,49 @@
                                   <option name="values">
                                     <map>
                                       <entry key="backgroundAssetType" value="COLOR" />
-                                      <entry key="backgroundColor" value="ffffff" />
                                       <entry key="foregroundImage" value="C:\Users\Michal Izydorczyk\Downloads\baseline-smoking_rooms-black-18\1x\baseline_smoking_rooms_black_18dp.png" />
-                                      <entry key="legacyIconShape" value="CIRCLE" />
-                                      <entry key="previewDensity" value="MEDIUM" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                            <entry key="launcherLegacy">
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="clipArt">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="000000" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                            <entry key="notification">
+                              <value>
+                                <PersistentState>
+                                  <option name="children">
+                                    <map>
+                                      <entry key="clipArt">
+                                        <value>
+                                          <PersistentState>
+                                            <option name="values">
+                                              <map>
+                                                <entry key="color" value="000000" />
+                                              </map>
+                                            </option>
+                                          </PersistentState>
+                                        </value>
+                                      </entry>
                                     </map>
                                   </option>
                                 </PersistentState>
