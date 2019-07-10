@@ -10,26 +10,30 @@
         android:id="@+id/wydanePieniadze"
         android:layout_width="wrap_content"
         android:layout_height="82dp"
-        android:layout_marginTop="44dp"
+        android:layout_marginTop="52dp"
+        android:layout_marginBottom="8dp"
         android:imeOptions="actionDone"
         android:text="@string/SumLabel"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/licznik"
         app:layout_constraintStart_toStartOf="@+id/licznik"
-        app:layout_constraintTop_toBottomOf="@+id/licznik" />
+        app:layout_constraintTop_toBottomOf="@+id/licznik"
+        app:layout_constraintVertical_bias="0.538" />
 
     <TextView
         android:id="@+id/licznik"
-        android:layout_width="wrap_content"
-        android:layout_height="75dp"
-        android:layout_marginStart="4dp"
+        android:layout_width="264dp"
+        android:layout_height="79dp"
         android:text="@string/CounterLabel"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/dailyText"
+        app:layout_constraintStart_toStartOf="@+id/dailyText"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.711" />
+        app:layout_constraintVertical_bias="0.725" />
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -46,20 +50,20 @@
 
     <TextView
         android:id="@+id/titleText"
-        android:layout_width="174dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="133dp"
-        android:layout_marginEnd="134dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
         android:text="@string/title_activity_stats"
         android:textSize="36sp"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.145"
+        app:layout_constraintVertical_bias="0.143"
         tools:visibility="visible" />
 
     <TextView
@@ -69,10 +73,27 @@
         android:text="@string/stats_per_day"
         android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/lastCigView"
+        app:layout_constraintStart_toStartOf="@+id/lastCigView"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.57"
-        tools:layout_editor_absoluteX="2dp"
+        app:layout_constraintVertical_bias="0.551"
         tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/lastCigView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:textSize="18sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/licznik"
+        app:layout_constraintEnd_toEndOf="@+id/titleText"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toStartOf="@+id/titleText"
+        app:layout_constraintTop_toBottomOf="@+id/titleText"
+        app:layout_constraintVertical_bias="0.186"
+        tools:text="@string/stats_last_cig" />
 
 
 </android.support.constraint.ConstraintLayout>

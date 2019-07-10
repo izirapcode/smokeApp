@@ -6,14 +6,17 @@ import com.izirapcode.helloworld.database.DbManager;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import static com.izirapcode.helloworld.database.DataManager.getLastCig;
 import static com.izirapcode.helloworld.database.DataManager.getSum;
 
 public class StatsActivity extends BasicActivity {
 
-    TextView counterText, sumText, dailyText;
+    TextView counterText, sumText, dailyText,lastCigTime;
     DbManager db;
 
     @Override
@@ -25,6 +28,7 @@ public class StatsActivity extends BasicActivity {
         setAvg();
         showCounter();
         showSum();
+        getLastSmokeTime();
     }
 
     private void initFields() {
@@ -32,6 +36,7 @@ public class StatsActivity extends BasicActivity {
         dailyText = findViewById(R.id.dailyText);
         sumText = findViewById(R.id.wydanePieniadze);
         counterText = findViewById(R.id.licznik);
+        lastCigTime = findViewById(R.id.lastCigView);
     }
 
     private void setAvg(){
@@ -54,6 +59,25 @@ public class StatsActivity extends BasicActivity {
     private void showSum() {
         Float spendSum = getSum(this);
         sumText.setText(getString(R.string.SumLabel, spendSum));
+    }
+
+
+    private void getLastSmokeTime(){
+        SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        Date date = new Date(), now = new Date();
+        try {
+            date =formatter.parse(getLastCig(StatsActivity.this));
+        } catch (ParseException e) {
+
+        }
+        long dayLength = 24*60*60*1000;
+        long hourLength = 60*60*1000;
+        long minLength = 60*1000;
+        long diff = now.getTime() - date.getTime();
+        int diffDays = (int)Math.floor(diff / dayLength);
+        int diffHours = (int) Math.floor((diff -(diffDays * dayLength)) / (hourLength));
+        int diffMin = (int)(((diff - (diffHours*hourLength)) / minLength));
+        lastCigTime.setText(getString(R.string.stats_last_cig,diffDays,diffHours,diffMin));
     }
 
 }

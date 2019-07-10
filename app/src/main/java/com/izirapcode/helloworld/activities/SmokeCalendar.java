@@ -24,7 +24,7 @@ public class SmokeCalendar extends BasicActivity {
     Calendar calendar;
     DbManager db;
     Button previous,next;
-    TextView monthHeader,lastCigTime;
+    TextView monthHeader;
     String[] monthName = { "Styczeń", "Luty", "Marzec", "Kwiecień", "Maj", "Czerwiec", "Lipiec",
             "Sierpień", "Wrzesień", "Październik", "Listopad", "Grudzień" };
 
@@ -60,8 +60,7 @@ public class SmokeCalendar extends BasicActivity {
         next = findViewById(R.id.next);
         monthHeader = findViewById(R.id.monthHeader);
         monthHeader.setText(monthName[calendar.get(Calendar.MONTH)]);
-        lastCigTime = findViewById(R.id.lastCigView);
-        lastCigTime.setText(getLastSmokeTime());
+
     }
 
     public void calendarSet(int amount){
@@ -70,23 +69,4 @@ public class SmokeCalendar extends BasicActivity {
         monthHeader.setText(monthName[calendar.get(Calendar.MONTH)]);
     }
 
-
-    private String getLastSmokeTime(){
-        SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        Date date, now = new Date();
-        try {
-            date =formatter.parse(getLastCig(SmokeCalendar.this));
-        } catch (ParseException e) {
-            return "error";
-        }
-        long dayLength = 24*60*60*1000;
-        long hourLength = 60*60*1000;
-        long minLength = 60*1000;
-        long diff = now.getTime() - date.getTime();
-        int diffDays = (int)Math.floor(diff / dayLength);
-        int diffHours = (int) Math.floor((diff -(diffDays * dayLength)) / (hourLength));
-        int diffMin = (int)(((diff - (diffHours*hourLength)) / minLength));
-        return "Ostatni papieros \nDni:"+diffDays+"\nGodzin:"+diffHours+"\nMinut:"+diffMin;
-
-    }
 }

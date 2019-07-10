@@ -15,4 +15,5 @@
     <string name="stats_per_month">Miesiecznie: \n %1$d</string>
     <string name="stats_total">Łącznie: \n %1$d</string>
     <string name="title_activity_stats">Statystyki</string>
+    <string name="stats_last_cig">Ostatni papieros \nDni: %1$d \nGodzin: %2$d \nMinut: %3$d"</string>
 </resources>
